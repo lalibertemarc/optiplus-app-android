@@ -16,9 +16,15 @@
       app:showAsAction="ifRoom" />
  
   <item
-      android:id="@+id/menu_newTime"
+      android:id="@+id/menu_time"
       android:enabled="true"
       android:icon="@drawable/clock"
       android:title="@string/tab3_title"
+      app:showAsAction="ifRoom" />
+ <item
+      android:id="@+id/menu_records"
+      android:enabled="true"
+      android:icon="@drawable/podium"
+      android:title="@string/tab4_title"
       app:showAsAction="ifRoom" />
 </menu>
