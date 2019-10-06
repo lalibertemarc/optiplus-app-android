@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Org.Apache.Http.Impl.Client;
-using SwimTimeTracker.Contracts;
+using SwimTimeTracker.Models;
 
 namespace SwimTimeTracker.Services
 {

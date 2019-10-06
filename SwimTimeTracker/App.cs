@@ -5,7 +5,7 @@ using Autofac;
 
 namespace SwimTimeTracker
 {
-    [Application(Icon = "@drawable/ic_launcher", Label = "@string/ApplicationName")]
+    [Application(Icon = "@drawable/ic_launcher", Label = "@strings/ApplicationName")]
     public class App : Application
     {
         public static string APPCENTER_PROD_APPID = "019b0b72-314a-4c76-892c-08f8909077c6";

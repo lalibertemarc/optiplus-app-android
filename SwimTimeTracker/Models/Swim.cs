@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SwimTimeTracker.Contracts
+namespace SwimTimeTracker.Models
 {
     public class Swim
     {
