@@ -7,6 +7,7 @@ using Android.Support.Design.Widget;
 using SwimTimeTracker.Helpers;
 using System.Collections.Generic;
 using System;
+using SwimTimeTracker.Fragments;
 
 namespace SwimTimeTracker
 {
@@ -37,6 +38,8 @@ namespace SwimTimeTracker
             switch (e.Item.ItemId)
             {
                 case Resource.Id.menu_swimmers:
+                    var swimmerFragment = new Swimmers_Fragment();
+                    LoadFragment(swimmerFragment);
                     break;
                 case Resource.Id.menu_events:
                     break;

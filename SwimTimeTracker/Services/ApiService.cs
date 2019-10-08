@@ -4,13 +4,14 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Org.Apache.Http.Impl.Client;
 using SwimTimeTracker.Models;
+using SwimTimeTracker.ViewModels;
 
 namespace SwimTimeTracker.Services
 {
     public interface IApiService
     {
         List<Time> GetAllTimes();
-        List<Swimmer> GetAllSwimmers();
+        List<SwimmerViewModel> GetAllSwimmers();
         List<Swim> GetAllSwims();
         List<Event> GetAllEvents();
         List<City> GetAllCities();
@@ -52,7 +53,7 @@ namespace SwimTimeTracker.Services
             return model;
         }
 
-        public List<Swimmer> GetAllSwimmers()
+        public List<SwimmerViewModel> GetAllSwimmers()
         {
             List<Swimmer> model = null;
             var task = client.GetAsync("http://108.61.78.227:10500/read/swimmers")
@@ -65,7 +66,10 @@ namespace SwimTimeTracker.Services
 
               });
             task.Wait();
-            return model;
+            var output = new List<SwimmerViewModel>();
+            model.ForEach(swimmer => { output.Add(new SwimmerViewModel(swimmer.Id, swimmer.Name, swimmer.Sexe, swimmer.CoachName)); });
+
+            return output;
         }
 
         public List<Swim> GetAllSwims()

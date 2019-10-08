@@ -3,14 +3,14 @@
   
   <group android:checkableBehavior="single">  
     <item  
-        android:id="@+id/nav_home"  
-        android:title="Orders" />  
+        android:id="@+id/left_nav_cities"  
+        android:title="Cities" />  
     <item  
-        android:id="@+id/nav_friends"  
-        android:title="Redeem" />  
+        android:id="@+id/left_nav_swims"  
+        android:title="Swims" />  
     <item  
         android:id="@+id/nav_profile"  
-        android:title="Notifications" />  
+        android:title="Coaches" />  
   </group>  
   
   
