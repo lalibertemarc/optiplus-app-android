@@ -53,9 +53,16 @@
               android:layout_gravity="start"  
               app:menu="@menu/left_menu_items"   
               android:fitsSystemWindows="true" >  
-  
-    
-        </android.support.design.widget.NavigationView>  
+            </android.support.design.widget.NavigationView>
+        
+          <android.support.design.widget.NavigationView    
+              android:id="@+id/nav_view"    
+              android:layout_height="match_parent"    
+              android:layout_width="240dp"    
+              android:layout_gravity="right"  
+              app:menu="@menu/right_menu_items"   
+              android:fitsSystemWindows="true" >  
+            </android.support.design.widget.NavigationView>  
                                                   
   </android.support.v4.widget.DrawerLayout>  
 </LinearLayout>  
