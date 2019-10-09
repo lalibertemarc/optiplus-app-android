@@ -27,8 +27,7 @@ namespace SwimTimeTracker.Fragments
         [InjectView(Resource.Id.swimmersList)]
         RecyclerView _recyclerView;
 
-        [InjectView(Resource.Id.progressBar)]
-        ProgressBar _progressBar;
+        public event EventHandler OnDataLoaded;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,19 +41,19 @@ namespace SwimTimeTracker.Fragments
             var view = inflater.Inflate(Resource.Layout.fragment, container, false);
             Cheeseknife.Inject(this, view);
 
-            _progressBar.Visibility = ViewStates.Visible;
             var list = App.Container.Resolve<IApiService>().GetAllSwimmers();
-            _progressBar.Visibility = ViewStates.Gone;
             var adapter = new SwimmerAdapter(list);
 
             adapter.OnItemClicked += Adapter_OnItemClicked;
             _recyclerView.SetAdapter(adapter);
             _recyclerView.HasFixedSize = true;
             _recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
+
+            OnDataLoaded?.Invoke(this, null);
             return view;
         }
 
-        private void Adapter_OnItemClicked(object sender, SwimmerViewModel e)
+        void Adapter_OnItemClicked(object sender, SwimmerViewModel e)
         {
             throw new NotImplementedException();
         }

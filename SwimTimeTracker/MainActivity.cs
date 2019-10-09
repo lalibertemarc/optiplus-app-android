@@ -20,6 +20,14 @@ namespace SwimTimeTracker
         [InjectView(Resource.Id.content_frame)]
         FrameLayout _contentFrame;
 
+        [InjectView(Resource.Id.progressBar)]
+        LinearLayout _progressBarLayout;
+
+        [InjectView(Resource.Id.fab)]
+        FloatingActionButton _floatingActionButton;
+
+        List<string> _fragmentTagsHistory;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,6 +37,7 @@ namespace SwimTimeTracker
             SetContentView(Resource.Layout.activity_main);
             Cheeseknife.Inject(this);
             SetToolbarInfo("Swim Time Tracker", string.Empty, false);
+            _fragmentTagsHistory = new List<string>();
             _bottomNavigationView.NavigationItemSelected += BottomNavigationView_NavigationItemSelected;
 
         }
@@ -38,7 +47,9 @@ namespace SwimTimeTracker
             switch (e.Item.ItemId)
             {
                 case Resource.Id.menu_swimmers:
+                    _progressBarLayout.Visibility = Android.Views.ViewStates.Visible;
                     var swimmerFragment = new Swimmers_Fragment();
+                    swimmerFragment.OnDataLoaded += SwimmerFragment_OnDataLoaded;
                     LoadFragment(swimmerFragment);
                     break;
                 case Resource.Id.menu_events:
@@ -49,6 +60,12 @@ namespace SwimTimeTracker
                     break;
 
             }
+        }
+
+        private void SwimmerFragment_OnDataLoaded(object sender, EventArgs e)
+        {
+            _progressBarLayout.Visibility = Android.Views.ViewStates.Gone;
+            _floatingActionButton.Visibility = Android.Views.ViewStates.Visible;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -65,13 +82,37 @@ namespace SwimTimeTracker
                 SupportActionBar.Subtitle = subTitle;
         }
 
-        private void LoadFragment(Android.Support.V4.App.Fragment fragment)
+        void LoadFragment(Android.Support.V4.App.Fragment fragment)
         {
             // load fragment
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Replace(Resource.Id.content_frame, fragment);
             transaction.AddToBackStack(null);
             transaction.Commit();
+        }
+
+        public Android.Support.V4.App.Fragment GetTopFragment()
+        {
+            string lastFragmentTag = _fragmentTagsHistory.Count > 0 ? _fragmentTagsHistory[_fragmentTagsHistory.Count - 1] : null;
+
+            if (string.IsNullOrEmpty(lastFragmentTag))
+                return null;
+
+            return SupportFragmentManager.FindFragmentByTag(lastFragmentTag);
+        }
+        public void PopTopFragment()
+        {
+            var topFragment = GetTopFragment();
+
+            if (topFragment is Swimmers_Fragment swimmers_Fragment)
+            {
+                //do something
+            }
+        }
+
+        void ReleaseFragmentEvents(Android.Support.V4.App.Fragment fragment)
+        {
+
         }
     }
 }

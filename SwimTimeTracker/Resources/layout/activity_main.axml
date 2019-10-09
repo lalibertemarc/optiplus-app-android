@@ -12,7 +12,20 @@
         <!-- The Main Content View -->  
         <RelativeLayout  
              android:layout_width="match_parent"  
-             android:layout_height="match_parent">  
+             android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:id="@+id/progressBar" 
+                android:layout_height="match_parent">
+                <ProgressBar
+                    android:progressTint="@color/colorPrimaryDark" 
+                    android:layout_width="50dp"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_atop"
+                    android:layout_height="50dp" />
+            </LinearLayout>
             <FrameLayout  
                 android:id="@+id/content_frame"  
                 android:layout_width="match_parent"  
@@ -27,18 +40,34 @@
                 android:background="@android:color/white"
                 app:elevation="16dp"
                 app:menu="@menu/bottom_navigation_main" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab" 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:layout_gravity="right"
+                app:elevation="16dp"
+                app:useCompatPadding="true"
+                android:visibility="gone"
+                style="@style/floating_action_button"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/add_white_18dp" 
+                android:layout_marginBottom="32dp" />
+                    
     </RelativeLayout>  
       
     <!-- The Left Navigation Drawer -->  
-      <android.support.design.widget.NavigationView    
-          android:id="@+id/nav_view"    
-          android:layout_height="match_parent"    
-          android:layout_width="240dp"    
-          android:layout_gravity="start"  
-          app:menu="@menu/left_menu_items"   
-          android:fitsSystemWindows="true" >  
+          <android.support.design.widget.NavigationView    
+              android:id="@+id/nav_view"    
+              android:layout_height="match_parent"    
+              android:layout_width="240dp"    
+              android:layout_gravity="start"  
+              app:menu="@menu/left_menu_items"   
+              android:fitsSystemWindows="true" >  
   
     
         </android.support.design.widget.NavigationView>  
+                                                  
   </android.support.v4.widget.DrawerLayout>  
 </LinearLayout>  
