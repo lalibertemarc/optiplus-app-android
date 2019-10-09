@@ -23,9 +23,6 @@ namespace SwimTimeTracker
         [InjectView(Resource.Id.progressBar)]
         LinearLayout _progressBarLayout;
 
-        [InjectView(Resource.Id.fab)]
-        FloatingActionButton _floatingActionButton;
-
         List<string> _fragmentTagsHistory;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -65,7 +62,6 @@ namespace SwimTimeTracker
         private void SwimmerFragment_OnDataLoaded(object sender, EventArgs e)
         {
             _progressBarLayout.Visibility = Android.Views.ViewStates.Gone;
-            _floatingActionButton.Visibility = Android.Views.ViewStates.Visible;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

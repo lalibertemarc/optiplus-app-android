@@ -9,6 +9,7 @@ using Android.Arch.Lifecycle;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using Android.Util;
 using Android.Views;
@@ -18,7 +19,6 @@ using SwimTimeTracker.Adapters;
 using SwimTimeTracker.Helpers;
 using SwimTimeTracker.Services;
 using SwimTimeTracker.ViewModels;
-using static Android.Support.V7.Widget.RecyclerView;
 
 namespace SwimTimeTracker.Fragments
 {
@@ -26,6 +26,9 @@ namespace SwimTimeTracker.Fragments
     {
         [InjectView(Resource.Id.swimmersList)]
         RecyclerView _recyclerView;
+
+        [InjectView(Resource.Id.fab)]
+        FloatingActionButton _floatingActionButton;
 
         public event EventHandler OnDataLoaded;
 
@@ -50,6 +53,7 @@ namespace SwimTimeTracker.Fragments
             _recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
 
             OnDataLoaded?.Invoke(this, null);
+            _floatingActionButton.Visibility = ViewStates.Visible;
             return view;
         }
 
