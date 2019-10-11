@@ -7,30 +7,34 @@ using SwimTimeTracker.ViewModels;
 
 namespace SwimTimeTracker.Adapters
 {
-    public class SwimmerAdapter : RecyclerView.Adapter
+    public class EventAdapter : RecyclerView.Adapter
     {
-        List<SwimmerViewModel> _swimmers;
-        public event EventHandler<SwimmerViewModel> OnItemClicked;
+        List<EventViewModel> _events;
+        public event EventHandler<EventViewModel> OnItemClicked;
 
-        public SwimmerAdapter(List<SwimmerViewModel> list)
+        public EventAdapter(List<EventViewModel> list)
         {
-            _swimmers = list;
+            _events = list;
         }
 
-        public override int ItemCount => _swimmers.Count;
+        public override int ItemCount => _events.Count;
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             var viewHolder = holder as ListItemViewHolder;
-            viewHolder.Title.Text = _swimmers[position].GetName();
-            viewHolder.SubTitle1.Text = _swimmers[position].GetCoachName();
+            viewHolder.Title.Text = _events[position].GetDescription();
+            viewHolder.SubTitle1.Text = _events[position].GetCity();
             viewHolder.SubTitle1.Visibility = ViewStates.Visible;
-            viewHolder.SubTitle2.Text = _swimmers[position].GetSex();
+            viewHolder.SubTitle2.Text = _events[position].GetStartDate();
             viewHolder.SubTitle2.Visibility = ViewStates.Visible;
+            viewHolder.SubTitle8.Text = _events[position].GetEndDate();
+            viewHolder.SubTitle8.Visibility = ViewStates.Visible;
+            viewHolder.SubTitle4.Text = _events[position].GetLevel();
+            viewHolder.SubTitle4.Visibility = ViewStates.Visible;
 
             viewHolder.OnItemClicked += (args, e) =>
             {
-                OnItemClicked?.Invoke(this, _swimmers[position]);
+                OnItemClicked?.Invoke(this, _events[position]);
             };
         }
 

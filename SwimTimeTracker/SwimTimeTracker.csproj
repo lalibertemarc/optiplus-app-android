@@ -75,6 +75,12 @@
     <Compile Include="ViewHolders\ListItemViewHolder.cs" />
     <Compile Include="ViewModels\SwimmerViewModel.cs" />
     <Compile Include="Fragments\Swimmers_Fragment.cs" />
+    <Compile Include="ViewModels\EventViewModel.cs" />
+    <Compile Include="ViewModels\TimeViewModel.cs" />
+    <Compile Include="Fragments\Event_Fragment.cs" />
+    <Compile Include="Adapters\EventAdapter.cs" />
+    <Compile Include="Adapters\TimeAdapter.cs" />
+    <Compile Include="Fragments\Time_Fragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

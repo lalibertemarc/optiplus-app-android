@@ -23,7 +23,7 @@ using SwimTimeTracker.ViewModels;
 
 namespace SwimTimeTracker.Fragments
 {
-    public class Swimmers_Fragment : Android.Support.V4.App.Fragment
+    public class Time_Fragment : Android.Support.V4.App.Fragment
     {
         [InjectView(Resource.Id.swimmersList)]
         RecyclerView _recyclerView;
@@ -34,9 +34,9 @@ namespace SwimTimeTracker.Fragments
         [InjectView(Resource.Id.listRefresher)]
         SwipeRefreshLayout _refresher;
 
-        SwimmerAdapter _adapter;
+        TimeAdapter _adapter;
 
-        List<SwimmerViewModel> _list;
+        List<TimeViewModel> _list;
 
         public event EventHandler OnDataLoaded;
 
@@ -50,8 +50,8 @@ namespace SwimTimeTracker.Fragments
             var view = inflater.Inflate(Resource.Layout.fragment, container, false);
             Cheeseknife.Inject(this, view);
 
-            _list = App.Container.Resolve<IApiService>().GetAllSwimmers();
-            _adapter = new SwimmerAdapter(_list);
+            _list = App.Container.Resolve<IApiService>().GetAllTimes();
+            _adapter = new TimeAdapter(_list);
 
             _adapter.OnItemClicked += Adapter_OnItemClicked;
             _recyclerView.SetAdapter(_adapter);
@@ -70,7 +70,7 @@ namespace SwimTimeTracker.Fragments
             throw new NotImplementedException();
         }
 
-        void Adapter_OnItemClicked(object sender, SwimmerViewModel e)
+        void Adapter_OnItemClicked(object sender, TimeViewModel e)
         {
             throw new NotImplementedException();
         }

@@ -10,10 +10,10 @@ namespace SwimTimeTracker.Services
 {
     public interface IApiService
     {
-        List<Time> GetAllTimes();
+        List<TimeViewModel> GetAllTimes();
         List<SwimmerViewModel> GetAllSwimmers();
         List<Swim> GetAllSwims();
-        List<Event> GetAllEvents();
+        List<EventViewModel> GetAllEvents();
         List<City> GetAllCities();
     }
 
@@ -37,7 +37,7 @@ namespace SwimTimeTracker.Services
             return model;
         }
 
-        public List<Event> GetAllEvents()
+        public List<EventViewModel> GetAllEvents()
         {
             List<Event> model = null;
             var task = client.GetAsync("http://108.61.78.227:10500/read/events")
@@ -50,7 +50,9 @@ namespace SwimTimeTracker.Services
 
               });
             task.Wait();
-            return model;
+            var output = new List<EventViewModel>();
+            model.ForEach(item => { output.Add(new EventViewModel(item.Id, item.Description, item.Start_Date, item.End_Date, item.City, item.Level)); });
+            return output;
         }
 
         public List<SwimmerViewModel> GetAllSwimmers()
@@ -88,7 +90,7 @@ namespace SwimTimeTracker.Services
             return model;
         }
 
-        public List<Time> GetAllTimes()
+        public List<TimeViewModel> GetAllTimes()
         {
             List<Time> model = null;
             var task = client.GetAsync("http://108.61.78.227:10500/read/times")
@@ -101,7 +103,9 @@ namespace SwimTimeTracker.Services
 
               });
             task.Wait();
-            return model;
+            var output = new List<TimeViewModel>();
+            model.ForEach(time => { output.Add(new TimeViewModel(time.Id, time.Distance, time.Style, time.ActualTime, time.Name, time.Age, time.City, time.Date)); }); ;
+            return output;
         }
     }
 }

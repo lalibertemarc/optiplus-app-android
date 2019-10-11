@@ -50,8 +50,16 @@ namespace SwimTimeTracker
                     LoadFragment(swimmerFragment);
                     break;
                 case Resource.Id.menu_events:
+                    _progressBarLayout.Visibility = Android.Views.ViewStates.Visible;
+                    var eventFragment = new Event_Fragment();
+                    eventFragment.OnDataLoaded += SwimmerFragment_OnDataLoaded;
+                    LoadFragment(eventFragment);
                     break;
                 case Resource.Id.menu_time:
+                    _progressBarLayout.Visibility = Android.Views.ViewStates.Visible;
+                    var timeFragment = new Time_Fragment();
+                    timeFragment.OnDataLoaded += SwimmerFragment_OnDataLoaded;
+                    LoadFragment(timeFragment);
                     break;
                 case Resource.Id.menu_records:
                     break;

@@ -33,5 +33,12 @@ namespace SwimTimeTracker.ViewHolders
         public TextView SubTitle4 { get; set; }
         [InjectView(Resource.Id.list_item_subtitle5)]
         public TextView SubTitle5 { get; set; }
+        [InjectView(Resource.Id.list_item_subtitle6)]
+        public TextView SubTitle6 { get; set; }
+        [InjectView(Resource.Id.list_item_subtitle7)]
+        public TextView SubTitle7 { get; set; }
+        [InjectView(Resource.Id.list_item_subtitle8)]
+        public TextView SubTitle8 { get; set; }
+
     }
 }

@@ -28,6 +28,7 @@ namespace SwimTimeTracker.ViewModels
         {
             return _sex.CompareTo('M') == 0 ? "Sex : Male" : "Sex : Female";
         }
+
         public string GetCoachName()
         {
             return $"Coach : {_coachName}";
