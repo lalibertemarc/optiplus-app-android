@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using SwimTimeTracker.Models;
-using Org.Apache.Http.Impl.Client;
 
 namespace SwimTimeTracker.Services
 {
@@ -14,6 +13,7 @@ namespace SwimTimeTracker.Services
         List<Swim> GetAllSwims();
         List<Event> GetAllEvents();
         List<City> GetAllCities();
+        List<Time> GetAllTimesForSwimmer(int swimmerId);
     }
 
     public class ApiService : IApiService
@@ -95,6 +95,24 @@ namespace SwimTimeTracker.Services
         {
             List<Time> model = null;
             var task = client.GetAsync("http://108.61.78.227:10500/read/times")
+              .ContinueWith((taskwithresponse) =>
+              {
+                  var response = taskwithresponse.Result;
+                  var jsonString = response.Content.ReadAsStringAsync();
+                  jsonString.Wait();
+                  model = JsonConvert.DeserializeObject<List<Time>>(jsonString.Result);
+
+              });
+            task.Wait();
+            //var output = new List<TimeViewModel>();
+            //model.ForEach(time => { output.Add(new TimeViewModel(time.Id, time.Distance, time.Style, time.ActualTime, time.Name, time.Age, time.City, time.Date)); }); ;
+            //return output;
+            return model;
+        }
+        public List<Time> GetAllTimesForSwimmer(int swimmerId)
+        {
+            List<Time> model = null;
+            var task = client.GetAsync($"http://108.61.78.227:10500/read/times/{swimmerId}")
               .ContinueWith((taskwithresponse) =>
               {
                   var response = taskwithresponse.Result;
