@@ -1,5 +1,5 @@
 ﻿using System;
-namespace SwimTimeTracker.Models
+namespace SwimTimeTracker.Models.Models
 {
     public class City
     {

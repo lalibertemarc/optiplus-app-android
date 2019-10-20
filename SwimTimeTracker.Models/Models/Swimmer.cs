@@ -1,7 +1,7 @@
 ﻿using System;
-namespace SwimTimeTracker.Models
+namespace SwimTimeTracker.Models.Models
 {
-    public class Swimmer
+    public class Swimmer : IBaseModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

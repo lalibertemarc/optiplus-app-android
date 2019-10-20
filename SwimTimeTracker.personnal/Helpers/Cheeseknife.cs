@@ -25,7 +25,7 @@ using System.Text;
 using Android.Runtime;
 using System.Collections.Generic;
 
-namespace SwimTimeTracker.Helpers
+namespace SwimTimeTracker.personnal.Helpers
 {
     /// <summary>
     /// Base injection attribute, to include a ResourceId

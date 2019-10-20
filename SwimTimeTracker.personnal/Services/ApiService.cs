@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SwimTimeTracker.Models;
+using SwimTimeTracker.Models.Models;
 
 namespace SwimTimeTracker.Services
 {

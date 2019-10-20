@@ -1,7 +1,7 @@
 ﻿using System;
-namespace SwimTimeTracker.Models
+namespace SwimTimeTracker.Models.Models
 {
-    public class Event
+    public class Event : IBaseModel
     {
         public int Id { get; set; }
         public DateTime Start_Date { get; set; }

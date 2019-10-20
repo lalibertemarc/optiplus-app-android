@@ -7,7 +7,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using SwimTimeTracker.Helpers;
+using SwimTimeTracker.personnal.Helpers;
 
 namespace SwimTimeTracker.personnal
 {
