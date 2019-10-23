@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
-using SwimTimeTracker.Forms.iOS.Services;
-using SwimTimeTracker.Forms.Services;
 using UIKit;
 using Xamarin.Forms;
 

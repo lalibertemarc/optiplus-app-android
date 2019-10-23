@@ -26,37 +26,52 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand"
                         Padding="10">
-                        <Label
-                            Text="{Binding ActualTime}"
-                            d:Text="Actual time"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemTextStyle}"
-                            FontSize="16" />
-                        <Label
-                            Text="{Binding Distance}"
-                            d:Text="Distance"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <Label
-                            Text="{Binding Style}"
-                            d:Text="Style"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <Label
-                            Text="{Binding Date}"
-                            d:Text="Date"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                        <Label
-                            Text="{Binding City}"
-                            d:Text="City"
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="10">
+                            <Label
+                                Text="{Binding Distance, StringFormat='{0:F0}m'}"
+                                d:Text="Distance"
+                                LineBreakMode="WordWrap"
+                                FontSize="13" />
+                            <Label
+                                Text=" "
+                                LineBreakMode="WordWrap"
+                                FontSize="13" />
+                            <Label
+                                Text="{Binding Style, StringFormat='{0:F0}: '}"
+                                d:Text="Style"
+                                LineBreakMode="WordWrap"
+                                FontSize="13" />
+                            <Label
+                                Text=" "
+                                LineBreakMode="WordWrap"
+                                FontSize="13" />
+                            <Label
+                                Text="{Binding ActualTime}"
+                                d:Text="Actual time"
+                                LineBreakMode="WordWrap"
+                                FontSize="16" />
+                        </StackLayout>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Padding="10">
+                            <Label
+                                Text="{Binding Date}"
+                                d:Text="Date"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            <Label
+                                Text="{Binding City}"
+                                d:Text="City"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Autofac;
 using SwimTimeTracker.Forms.Services;
 using SwimTimeTracker.Forms.Views;
 using SwimTimeTracker.Models.Models;
@@ -44,7 +45,7 @@ namespace SwimTimeTracker.Forms.ViewModels
 
                 try
                 {
-                    list = DependencyService.Get<IApiService>().GetAllTimesForSwimmer(31);
+                    list = App.Container.Resolve<IApiService>().GetAllTimesForSwimmer(31);
                 }
                 catch (Exception ex)
                 {

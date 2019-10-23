@@ -3,16 +3,19 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SwimTimeTracker.Forms.Services;
 using SwimTimeTracker.Forms.Views;
-using System.ComponentModel;
+using Autofac;
 
 namespace SwimTimeTracker.Forms
 {
     public partial class App : Application
     {
+        public static IContainer Container;
         public App()
         {
             InitializeComponent();
-
+            var builder = new ContainerBuilder();
+            builder.RegisterType<ApiService>().As<IApiService>();
+            Container = builder.Build();
             //DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
