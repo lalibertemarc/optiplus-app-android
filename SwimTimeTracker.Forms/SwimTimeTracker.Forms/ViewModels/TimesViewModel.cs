@@ -43,29 +43,21 @@ namespace SwimTimeTracker.Forms.ViewModels
             {
                 Items.Clear();
 
-                try
-                {
-                    list = App.Container.Resolve<IApiService>().GetAllTimesForSwimmer(31);
-                }
-                catch (Exception ex)
-                {
-                    //todo: handle error
-                    list = new List<Time>();
-                }
+                list = App.Container.Resolve<IApiService>().GetAllTimesForSwimmer(31);
 
                 foreach (var time in list)
-                {
                     Items.Add(time);
-                }
             }
             catch (Exception ex)
             {
+                list = new List<Time>();
                 Debug.WriteLine(ex);
             }
             finally
             {
                 IsBusy = false;
             }
+
         }
     }
 
