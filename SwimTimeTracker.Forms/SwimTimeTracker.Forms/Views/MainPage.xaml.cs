@@ -31,7 +31,7 @@ namespace SwimTimeTracker.Forms.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Overview:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new TimesPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

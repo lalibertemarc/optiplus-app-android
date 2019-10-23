@@ -9,14 +9,11 @@ namespace SwimTimeTracker.Forms
 {
     public partial class App : Application
     {
-        static IContainer container;
-        //static readonly ContainerBuilder builder = new ContainerBuilder();
-
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 

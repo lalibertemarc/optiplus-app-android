@@ -10,21 +10,22 @@ using Xamarin.Forms.Xaml;
 using SwimTimeTracker.Forms.Models;
 using SwimTimeTracker.Forms.Views;
 using SwimTimeTracker.Forms.ViewModels;
+using SwimTimeTracker.Models.Models;
+using System.Collections.ObjectModel;
 
 namespace SwimTimeTracker.Forms.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class TimesPage : ContentPage
     {
         TimesViewModel viewModel;
-
         public TimesPage()
         {
             InitializeComponent();
+            viewModel = new TimesViewModel();
 
-            BindingContext = viewModel = new TimesViewModel();
+            BindingContext = viewModel.Items;
+            TimesListView.ItemsSource = viewModel.Items;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -48,7 +49,7 @@ namespace SwimTimeTracker.Forms.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Times.Count == 0)
+            if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }

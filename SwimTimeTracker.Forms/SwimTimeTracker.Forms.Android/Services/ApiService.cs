@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using SwimTimeTracker.Forms.Services;
+using SwimTimeTracker.Models.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SwimTimeTracker.Models.Models;
+using Xamarin.Forms;
 
-namespace SwimTimeTracker.Services
+[assembly: Dependency(typeof(SwimTimeTracker.Forms.Droid.Services.ApiService))]
+namespace SwimTimeTracker.Forms.Droid.Services
 {
-    public interface IApiService
-    {
-        List<Time> GetAllTimes();
-        List<Swimmer> GetAllSwimmers();
-        List<Swim> GetAllSwims();
-        List<Event> GetAllEvents();
-        List<City> GetAllCities();
-        List<Time> GetAllTimesForSwimmer(int swimmerId);
-
-        void AddTime(Time time);
-    }
-
     public class ApiService : IApiService
     {
         HttpClient client = new HttpClient();

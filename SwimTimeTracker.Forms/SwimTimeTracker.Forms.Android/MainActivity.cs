@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using SwimTimeTracker.Forms.Services;
+using SwimTimeTracker.Forms.Droid.Services;
 
 namespace SwimTimeTracker.Forms.Droid
 {
