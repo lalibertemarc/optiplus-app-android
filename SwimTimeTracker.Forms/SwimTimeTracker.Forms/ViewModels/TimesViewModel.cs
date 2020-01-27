@@ -27,7 +27,7 @@ namespace SwimTimeTracker.Forms.ViewModels
             {
                 var newTime = item as Time;
                 Items.Add(newTime);
-                //DependencyService.Get<IApiService>();
+                //api call
             });
         }
 

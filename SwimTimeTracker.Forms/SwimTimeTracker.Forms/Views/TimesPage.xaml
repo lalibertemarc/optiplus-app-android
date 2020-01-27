@@ -21,17 +21,18 @@
         IsPullToRefreshEnabled="true"
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         CachingStrategy="RecycleElement"
+        HasUnevenRows="true"
         ItemSelected="OnItemSelected">
         <ListView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>
+                <ViewCell
+                    Height="75">
                     <StackLayout
+                        x:Name="TimeCell"
                         Orientation="Vertical"
-                        VerticalOptions="FillAndExpand"
                         Padding="10">
                         <StackLayout
-                            Orientation="Horizontal"
-                            Padding="10">
+                            Orientation="Horizontal">
                             <Label
                                 Text="{Binding Distance, StringFormat='{0:F0}m'}"
                                 d:Text="Distance"
@@ -52,13 +53,13 @@
                                 FontSize="13" />
                             <Label
                                 Text="{Binding ActualTime}"
+                                HorizontalTextAlignment="End"
                                 d:Text="Actual time"
                                 LineBreakMode="WordWrap"
                                 FontSize="16" />
                         </StackLayout>
                         <StackLayout
-                            Orientation="Horizontal"
-                            Padding="10">
+                            Orientation="Horizontal">
                             <Label
                                 Text="{Binding Date}"
                                 d:Text="Date"
